@@ -171,7 +171,11 @@ cython_debug/
 .pypirc
 
 
-**/migrations/
+# migrations ichidagi barcha fayllarni ignore qilish
+**/migrations/*
+# faqat papkani o‘zi ignore bo‘lmasin
+!**/migrations/
+# faqat __init__.py commit qilinsin
 !**/migrations/__init__.py
 
 

@@ -44,7 +44,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(
             **validated_data,
             password=password,
-            role='CUSTOMER'
         )
         return user
 
@@ -85,5 +84,6 @@ class UserSerializer(serializers.ModelSerializer):
             'id',
             'first_name',
             'last_name',
+            'phone_number',
             'role',
         ]

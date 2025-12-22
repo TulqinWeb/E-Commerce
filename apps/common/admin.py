@@ -1,3 +1,3 @@
-from django.contrib import admin
+from apps.common.core.services.register_model import auto_register_admin_models
 
-# Register your models here.
+auto_register_admin_models()

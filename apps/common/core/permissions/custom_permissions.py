@@ -1,11 +1,10 @@
-from rest_framework.permissions import BasePermission
+from rest_framework.permissions import BasePermission, SAFE_METHODS
 
-
-class AdminPermission(BasePermission):
+class IsAdminOrReadOnly(BasePermission):
     def has_permission(self, request, view):
-        return request.user and request.role == "ADMIN"
+        # Customer GET qila oladi
+        if request.method in SAFE_METHODS:
+            return request.user.is_authenticated
 
-
-class CustomerPermission(BasePermission):
-    def has_permission(self, request, view):
-        return request.user and request.role == "CUSTOMER"
+        # Admin CRUD qiladi
+        return request.user.is_authenticated and request.user.role == "ADMIN"
